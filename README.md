@@ -213,3 +213,4 @@ This is NakaNomad's moat: the relationships, the field experience, the actual ex
 ---
 
 *Built on Bitcoin. Paid in sats. Run by practitioners.*
+# Deploy triggered Sun Mar 29 07:46:47 UTC 2026
