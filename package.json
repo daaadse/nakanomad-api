@@ -1,0 +1,20 @@
+{
+  "name": "nakanomad-api",
+  "version": "1.0.0",
+  "description": "L402 Jurisdiction API for Bitcoin holders and AI agents",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "DEV_MODE=true node src/server.js",
+    "deploy": "chmod +x ./deploy.sh && ./deploy.sh"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.0",
+    "axios": "^1.7.0",
+    "bech32": "^2.0.0",
+    "bolt11": "^1.4.1",
+    "fastify": "^5.2.0",
+    "ssh2": "^1.17.0"
+  }
+}

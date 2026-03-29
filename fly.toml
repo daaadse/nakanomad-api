@@ -1,0 +1,44 @@
+# Fly.io app configuration for NakaNomad Jurisdiction API
+
+app = "nakanomad-api"
+primary_region = "sin"  # Singapore — closest to Thailand
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  HOST = "0.0.0.0"
+  NODE_ENV = "production"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[[vm]]
+  memory = "256mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+# Secrets (set via: fly secrets set KEY=value)
+# ALBY_API_KEY - your Alby REST API key
+# L402_SECRET  - random secret for macaroon signing: openssl rand -hex 32
+
+# Scaling
+[scale]
+  min_machines = 1
+  max_machines = 3
+
+# Health check
+[[http_service.checks]]
+  grace_period = "10s"
+  interval = "15s"
+  method = "GET"
+  path = "/health"
+  timeout = "2s"
